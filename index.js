@@ -15,6 +15,20 @@ app.get('/test', function (req, res) {
     res.send('Hello World')
 })
 
+app.get('/getaxios', function (req, res) {
+    res.send({
+        message: "Hello Worldget",
+        obj: 'yi'
+    })
+})
+
+app.post('/postaxios', function (req, res) {
+    res.send({
+        message: "Hello Worldpost",
+        obj: 'yi'
+    })
+})
+
 // Handle all 404 Error
 app.use(function (req, res, next) {
     res.status(404).send("Sorry can't find that!")

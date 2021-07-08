@@ -4,9 +4,39 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import axios from 'axios';
 
 import logo from './logo.svg';
 import './App.css';
+
+const clickGet = async () => {
+    // Make a request for a user with a given ID
+    await axios.get('/getaxios?id=12312')
+    .then(function (response) {
+      // handle success
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });
+}
+
+const clickPost = async () => {
+  await axios.post('/postaxios', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
 
 function App() {
   return (
@@ -45,7 +75,12 @@ function App() {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return <div>
+    <h2>Home</h2>
+    <p>some text here</p>
+    <button className="testclass" onClick={clickGet}>Click Get Axios</button>
+    <button className="testclass" onClick={clickPost}>Click Post Axios</button>
+  </div>;
 }
 
 function About() {
